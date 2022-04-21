@@ -1,25 +1,23 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import MainMint from './MainMint';
+import NavBar from './NavBar';
 
-function App() {
+
+const App = () => {
+  //this allows us that any visual elements that change any button click that updates ui react hook will know
+  //to render the changes
+  const [accounts, setAccounts] = useState([]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="overlay">
+      <div className="App">
+        {/* this component can use same states that we have created above */}
+        <NavBar accounts={accounts} setAccounts={setAccounts} />
+        <MainMint accounts={accounts} setAccounts={setAccounts} />
+      </div>
+      <div className='moving-background'></div>
     </div>
-  );
+  )
 }
 
 export default App;
